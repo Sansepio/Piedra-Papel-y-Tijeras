@@ -1,42 +1,90 @@
-let playerSelection = prompt("introdusca Piedra, Papel o Tijeras")
+//dom
+const btn = document.querySelectorAll('button')
 
-playerSelection = playerSelection.toUpperCase(playerSelection)
-
-
+//Crear la seleccion del ordenador 
 function getCompueterSelection(){
-    const selection = ["PIEDRA", "PAPEL", "TIJERAS"]
+    const selection = ["piedra", "papel", "tijeras"]
 
     const computerSelection = selection[Math.floor(Math.random() * selection.length)]
 
     return computerSelection
 }
+function getPlayerSelection(id) {
+    const playerSelection = id
 
-piedra='PIEDRA'
-papel = 'PAPEL'
-tijeras = 'TIJERAS'
+    console.log(typeof playerSelection)
+
+    return playerSelection
+}
+
+let player = 0
+let pc = 0
+let round = 0
+
 
 const computerSelection = getCompueterSelection()
 
 function playRound(playerSelection, computerSelection) { 
-    // console.log(`jugador ${playerSelection} Vs pc ${computerSelection}`)
+    
+    game()
+    //Comparar los resulatados para decidir el ganador
 
-    if(playerSelection === computerSelection){
-        console.log("Tablas")
-    }else if(playerSelection===piedra){
-        if(computerSelection===papel) return console.log("Pierdes")
-        if(computerSelection===tijeras) return console.log("Ganas")
-    }
-    else if(playerSelection===papel){
-        if(computerSelection===tijeras) return console.log("Pierdes")
-        if(computerSelection===piedra) return console.log("Ganas")
-    }
-    else if(playerSelection===tijeras){
-        if(computerSelection===piedra) return console.log("Pierdes")
-        if(computerSelection===papel) return console.log("Ganas")
-    }
+    if (round < 6) {
+        console.log(`El Jugador Selecciona ${playerSelection}`)
+        console.log(`La PC selecciona ${computerSelection}`)
+
+        console.log(`player ${player}`)
+            console.log(`pc ${pc}`)
+
+        if(playerSelection === computerSelection){
+            console.log("Tablas")
+            player ++
+            pc ++
+        }else if(playerSelection === "piedra"){
+            if(computerSelection === "papel") {
+                console.log("Pierdes")
+                pc ++
+            }
+            if(computerSelection === "tijeras") {
+                console.log("Ganas")
+                player ++
+            }
+        }
+        else if(playerSelection === "papel"){
+            if(computerSelection === "tijeras") {
+                console.log("Pierdes")
+                pc ++
+            }
+            if(computerSelection === "piedra") {
+                console.log("Ganas")
+                player ++
+            }
+        }
+        else if(playerSelection === "tijeras"){
+            if(computerSelection === "piedra") {
+                console.log("Pierdes")
+                pc ++
+            }
+            if(computerSelection === "papel") {
+                console.log("Ganas")
+                player++
+            }
+        }
+    }    
 
 }
 
-playRound(playerSelection, computerSelection)
+
+function game() {
+    round ++
+    console.log(`ronda #${round}`)
+}
 
 
+
+btn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const playerSelection = btn.id
+        playRound(playerSelection, computerSelection)
+    })   
+})
