@@ -26,16 +26,16 @@ const computerSelection = getCompueterSelection()
 
 function playRound(playerSelection, computerSelection) { 
     
-    game()
-    //Comparar los resulatados para decidir el ganador
-
-    if (round < 6) {
+    if (round == 0 && round < 6) {
+        game()
         console.log(`El Jugador Selecciona ${playerSelection}`)
         console.log(`La PC selecciona ${computerSelection}`)
-
+        
         console.log(`player ${player}`)
-            console.log(`pc ${pc}`)
+        console.log(`pc ${pc}`)
 
+        
+        //Comparar los resulatados para decidir el ganador
         if(playerSelection === computerSelection){
             console.log("Tablas")
             player ++
