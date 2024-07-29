@@ -3,6 +3,10 @@ body{
     align-items: center;
     flex-direction: column;
 }
+
+#app{
+    height: 100vh;
+}
 article{
     text-align: center;
 }
@@ -17,6 +21,9 @@ article{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+#table{
+    height: 150px;
 }
 
 #selectors{
